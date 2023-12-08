@@ -1,0 +1,139 @@
+// @import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/** 
+ * for each page styles, its better to add them into seperate files and 
+ * import them for usage as mixins inside custom tailwind classes
+**/
+
+
+
+// add your basic style configs here
+body {
+  color: theme("colors.dark");
+  background-color: theme("colors.light");
+
+  @apply 
+    overflow-x-hidden font-main
+    text-xs 
+    sc-sm:text-sm 
+    sc-mid:text-base 
+    sc-laptop:text-lg;
+}
+h1, h2, h3 {
+  @apply font-bold;
+}
+h1{
+  font-size: clamp(24px, 8vw, 48px);
+  line-height: clamp(28px, 12vw, 60px);
+}
+h2{
+  font-size: clamp(20px, 6vw, 36px);
+  line-height: clamp(24px, 10vw, 48px);
+}
+h3{
+  font-size: clamp(16px, 4vw, 24px);
+  line-height: clamp(20px, 8vw, 36px);
+}
+
+
+// enable if you have input date and time icons to be bright as wanted
+// input[type="time"], input[type="date"]{
+//   &::-webkit-calendar-picker-indicator{
+//     filter: invert(1);
+//   }
+// }
+
+
+// scrollbar styling
+::-webkit-scrollbar-thumb {
+  border: 2px solid transparent;
+  background-clip: padding-box;
+
+  @apply bg-weak rounded-full;
+}
+::-webkit-scrollbar {
+  @apply bg-light w-2 h-2;
+}
+::-webkit-scrollbar-track {
+  @apply m-0.5;
+}
+
+
+// these selectors manipulates the browser cached putting bg color of white 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-text-fill-color: theme("colors.prime") !important;
+  -webkit-background-clip: text !important;
+}
+
+
+
+// add your custom tailwind classes here
+@layer components {
+  // put here utils
+  .center-it {
+    @apply flex items-center justify-center;
+  }
+
+  .max-eye-view {
+    @apply mx-auto w-full max-w-[650px];
+  }
+
+  .my-rounding {
+    @apply rounded-md;
+  }
+
+
+  // put here tag-related utils
+  .is-link {
+    @apply 
+      text-prime underline
+      transition-colors
+      hover:text-second;
+  }
+
+  .is-modal {
+    @apply 
+      bg-dark/80
+      w-full h-full 
+      fixed top-0 left-0 z-[1000];
+  }
+
+  .btn {
+    // good to make: colored btn and cancel btn
+    display: inline-block;
+    @apply 
+      px-3 pt-1.5 pb-1
+      text-center 
+      my-rounding 
+      cursor-pointer 
+      hover:brightness-[80%];
+    
+
+    &:disabled {
+      @apply 
+        cursor-not-allowed opacity-50
+        hover:brightness-100;
+    }
+  }
+
+  .input {
+    display: inline-block;
+    @apply 
+      py-0.5 px-1.5 w-full
+      bg-light text-dark
+      my-rounding outline-0;
+
+
+    // border style and effect on focus
+    border: 2px outset theme("colors.weak");
+    &:focus {
+      border-style: inset;
+    }
+  }
+}

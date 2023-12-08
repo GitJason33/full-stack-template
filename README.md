@@ -13,5 +13,4 @@
 
 - second, you can remove what you don't want or need, and start building the project. 
 
-- third, you must un-comment the `*/.env` line inside [.gitignore], as they must stay secret files.
-# full-stack-template
+- third, you must un-comment the `*/.env` line inside [.gitignore], as they must stay secret files
