@@ -5,8 +5,9 @@
 
 /** 
  * for each page styles, its better to add them into seperate files and 
- * import them for usage as mixins inside custom tailwind classes
+ * import them for usage as utility classes
 **/
+@import "./loader";
 
 
 

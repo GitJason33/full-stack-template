@@ -5,7 +5,7 @@ export const ConfirmContext = createContext();
 
 
 export const ConfirmState = ({ children }) => {
-  let initialState = {
+  const initialState = {
     open: false, 
     msg: "Are you sure?",
     callback_OK: () => console.log("confirm?")

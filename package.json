@@ -1,7 +1,7 @@
 {
   "name": "full-stack-template",
-  "version": "1.0.0",
-  "description": "full stack web app using DERN stack (database is not based only on mongodb)",
+  "version": "1.0.1",
+  "description": "full stack web app using DERN stack (Database is not based only on mongodb)",
   "devDependencies": {
     "concurrently": "^8.2.2"
   },
