@@ -14,6 +14,8 @@ export default {
         light: '#e0e0e0',
         dark: '#070707',
         weak: '#999999',
+        correct: "green",
+        incorrect: "crimson",
       },
 
       // your fonts here
