@@ -2,6 +2,7 @@ require("dotenv").configDotenv({ path: './.env' });
 
 const express = require('express');
 const cors = require('cors');
+const logger = require('morgan');
 
 
 const ErrorHandler = require("./controllers/middlewares/ErrorHandler.js");
@@ -15,6 +16,7 @@ const PORT = process.env.PORT || 12_000;
 
 
 // middlewares
+app.use(logger('dev'))
 app.use(cors({ origin: process.env.CORS_CLIENTS }));
 app.use(APIKeyChecker);
 app.use(express.json());
