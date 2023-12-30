@@ -6,7 +6,7 @@
     "concurrently": "^8.2.2"
   },
   "scripts": {
-    "server": "concurrently \"npm run dev --prefix ./server\" \"npm run bundle --prefix ./server\"",
+    "server": "npm run dev --prefix ./server",
     "client": "npm run dev --prefix ./client"
   },
   "author": "Jason Dirany"

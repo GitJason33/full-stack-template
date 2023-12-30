@@ -5,7 +5,7 @@
   "main": "server.js",
   "type": "commonjs",
   "scripts": {
-    "dev": "nodemon ./dist/server.bundle.js",
+    "dev": "nodemon ./server.js",
     "bundle": "webpack --watch",
 
     "start": "node ./dist/server.bundle.js",

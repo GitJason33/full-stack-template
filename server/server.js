@@ -7,6 +7,7 @@ const logger = require('morgan');
 
 const ErrorHandler = require("./controllers/middlewares/ErrorHandler.js");
 const APIKeyChecker = require("./controllers/middlewares/ApiKeyChecker.js");
+const cacheHttpReq = require("./controllers/middlewares/cacheHttpReq.js");
 
 
 
@@ -16,11 +17,11 @@ const PORT = process.env.PORT || 12_000;
 
 
 // middlewares
-app.use(logger('dev'))
+app.use(logger('dev'));
 app.use(cors({ origin: process.env.CORS_CLIENTS }));
 app.use(APIKeyChecker);
 app.use(express.json());
-
+app.use(cacheHttpReq);
 
 
 // endpoint routers

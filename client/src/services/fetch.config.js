@@ -1,4 +1,6 @@
-const BASE_URL = "http://localhost:4500/api";
+const BASE_URL = import.meta.VITE_DEV_MODE === "dev" 
+  ? import.meta.env.VITE_API_LOCALHOST
+  : import.meta.env.VITE_API_URL;
 
 const headers = {
   "Content-Type": "application/json",
