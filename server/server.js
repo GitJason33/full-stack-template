@@ -1,13 +1,13 @@
 require("dotenv").configDotenv({ path: './.env' });
-
 const express = require('express');
-const cors = require('cors');
 const logger = require('morgan');
 
 
 const ErrorHandler = require("./controllers/middlewares/ErrorHandler.js");
 const APIKeyChecker = require("./controllers/middlewares/ApiKeyChecker.js");
-const cacheHttpReq = require("./controllers/middlewares/cacheHttpReq.js");
+const addImportantHttpHeaders = require("./controllers/middlewares/ImportantHttpHeaders.js");
+const rateLimiter = require('./controllers/middlewares/rateLimiter.js');
+const setCors = require("./controllers/middlewares/setCors.js");
 
 
 
@@ -18,14 +18,15 @@ const PORT = process.env.PORT || 12_000;
 
 // middlewares
 app.use(logger('dev'));
-app.use(cors({ origin: process.env.CORS_CLIENTS }));
+app.use(rateLimiter);
+app.use(setCors);
 app.use(APIKeyChecker);
 app.use(express.json());
-app.use(cacheHttpReq);
+app.use(addImportantHttpHeaders);
 
 
 // endpoint routers
-app.get("/api", (req, resp) => {
+app.get("/", (req, resp) => {
   resp.json({ msg: "welcome to template api" })
 });
 
@@ -39,5 +40,5 @@ app.use(ErrorHandler);
 // app listens at port on localhost
 app.listen(
   PORT, 
-  () => console.log(`API running at http://localhost:${PORT}/api`)
+  () => console.log(`API running at http://localhost:${PORT}`)
 );
